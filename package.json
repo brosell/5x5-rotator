@@ -1,0 +1,19 @@
+{
+  "name": "5x5-rotator",
+  "version": "1.0.0",
+  "description": "creates a 5x5 workout from lists of exercises",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "exercise"
+  ],
+  "author": "Bert Rosell",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.1.5",
+    "moment": "^2.18.0",
+    "node-linq": "0.0.5"
+  }
+}

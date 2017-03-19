@@ -1,0 +1,122 @@
+[
+  {
+    "id": "c21daa27-0133-4c29-ad6c-5661863bbdee",
+    "category": "pull",
+    "exerciseName": "pull-up",
+    "description": "",
+    "isCurrent": true,
+    "model": "exercises"
+  },
+  {
+    "id": "6d79f310-ae75-4678-900a-fbb6259359d1",
+    "category": "pull",
+    "exerciseName": "chin-upsdf",
+    "description": "",
+    "isCurrent": "",
+    "model": "exercises"
+  },
+  {
+    "id": "c72ba4be-5314-4e81-b5d0-94f2ded6d583",
+    "category": "pull",
+    "exerciseName": "Austrailian pull-up",
+    "description": "",
+    "isCurrent": "",
+    "model": "exercises"
+  },
+  {
+    "id": "b313fa2a-ac94-4169-924d-db402ac77e27",
+    "category": "pull",
+    "exerciseName": "row",
+    "description": "",
+    "isCurrent": "",
+    "model": "exercises"
+  },
+  {
+    "id": "6a0ef492-14bb-4e05-a0a5-7e258eeefd56",
+    "category": "push",
+    "exerciseName": "push-up",
+    "description": "",
+    "isCurrent": true,
+    "model": "exercises"
+  },
+  {
+    "id": "95980b81-f510-436b-8eec-cdcaec716288",
+    "category": "push",
+    "exerciseName": "inclined push-up",
+    "description": "",
+    "isCurrent": "",
+    "model": "exercises"
+  },
+  {
+    "id": "8483f9dc-9a7b-486f-ae9b-f9bbbe52010c",
+    "category": "push",
+    "exerciseName": "dip",
+    "description": "",
+    "isCurrent": "",
+    "model": "exercises"
+  },
+  {
+    "id": "01d22ee6-8b47-48e1-9f86-56e49ffb87e2",
+    "category": "hinge",
+    "exerciseName": "dead-lift",
+    "description": "",
+    "isCurrent": true,
+    "model": "exercises"
+  },
+  {
+    "id": "6824d306-4294-4d96-ac7f-ad7f274f1fbb",
+    "category": "hinge",
+    "exerciseName": "kettlebell-swing",
+    "description": "",
+    "isCurrent": "",
+    "model": "exercises"
+  },
+  {
+    "id": "1542fc96-c86f-4753-8736-6b11623cb520",
+    "category": "core",
+    "exerciseName": "plank",
+    "description": "",
+    "isCurrent": true,
+    "model": "exercises"
+  },
+  {
+    "id": "ed66efe0-9f2a-4027-8b04-ce7687fb38dc",
+    "category": "core",
+    "exerciseName": "mountain-climber",
+    "description": "",
+    "isCurrent": "",
+    "model": "exercises"
+  },
+  {
+    "id": "2c14408d-ee3f-47f5-9c6c-7344c3fb347a",
+    "category": "leg",
+    "exerciseName": "squat",
+    "description": "",
+    "isCurrent": true,
+    "model": "exercises"
+  },
+  {
+    "id": "f6fda12d-73dd-44e3-ac07-7cc079b96d75",
+    "category": "leg",
+    "exerciseName": "lunge",
+    "description": "",
+    "isCurrent": "",
+    "model": "exercises"
+  },
+  {
+    "id": "c0658b1c-64da-455f-9dea-ce049772121c",
+    "category": "leg",
+    "exerciseName": "Russian lunge",
+    "description": "",
+    "isCurrent": "",
+    "model": "exercises"
+  },
+  {
+    "id": "7603e851-ff22-4e44-9c13-295a046ad3a3",
+    "category": "leg",
+    "exerciseName": "pistol-squat",
+    "description": "",
+    "isCurrent": "",
+    "model": "exercises"
+  }
+]
