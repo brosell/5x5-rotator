@@ -69,7 +69,6 @@ describe('RequestDispatcher', function() {
         { tag: 'delete/id', method: 'DELETE', id: 12, facet: undefined, expected: { fn: 'onDelete', fnArgs: [12, request], status: 200, response: 'roger onGet', post: 'postData' } },
         { tag: 'delete/id/facet', method: 'DELETE', id: 13, facet: 'banana', expected: { fn: 'delete_banana', fnArgs: [13, request], status: 200, response: 'roger get_banana' } },
     ]
-   
     all('responds to methods', tcRespondsTo, function(tc) {
         request.method = tc.method;
         data.id = tc.id;
@@ -92,6 +91,14 @@ describe('RequestDispatcher', function() {
         expect(calledArgs).toEqual(tc.expected.fnArgs);
     });
 
+    it('404s for unknown or missing implementation methods', function() {
+        request.method = 'derp_method';
+        data.id = 12;
+        
+        var result = dispatcher.dispatch(request, apiResource, data);
+
+        expect({status: 404, response: "Not found"}).toEqual(result);
+    });
 
     
     it('pin dispatch', function() {

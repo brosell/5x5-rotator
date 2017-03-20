@@ -2,77 +2,53 @@
 function RequestDispatcher() {
 
     this.dispatch = function(request, modelResource, data) {
-        var method = request.method;
         var result = { status: 404, response: "Not found" };
         var restResult = "";
-        // return value { status: nnn, response: ffff }
-        if (method == 'GET' && !data.id && data.facet) {
-            restResult = modelResource['list_' + data.facet](request);
-            if (restResult) {
-                result.status = 200;
-            }
-        } else if (method == 'GET' && !data.id && modelResource.onList) {
-            // list
-            restResult = modelResource.onList(request);
-            if (restResult) {
-                result.status = 200;
-            }
-        } 
-        
-        else if (method == 'GET' && data.facet) {
-            // get
-            restResult = modelResource['get_' + data.facet](data.id, request);
-            if (restResult) {
-                result.status = 200;
-            }
-        } else if (method == 'GET' && modelResource.onGet) {
-            // get
-            restResult = modelResource.onGet(data.id, request);
-            if (restResult) {
-                result.status = 200;
-            }
-        } 
-        
-        else if (method == 'POST' && !data.id && data.facet) {
-            // create
-            restResult = modelResource['post_' + data.facet](data.postData, request);
-            if (restResult) {
-                result.status = 201;
-            }
-        } else if (method == 'POST' && !data.id && modelResource.onPost) {
-            // create
-            restResult = modelResource.onPost(data.postData, request);
-            if (restResult) {
-                result.status = 201;
-            }
-        } 
-        
-        else if (method == 'PUT' && data.facet) {
-            restResult = modelResource['put_' + data.facet](data.id, data.postData, request);
-            if (restResult) {
-                result.status = 200;
-            }
-        } else if (method == 'PUT' && modelResource.onPut) {
-            restResult = modelResource.onPut(data.id, data.postData, request);
-            if (restResult) {
-                result.status = 200;
-            }
-        } 
-        
-        else if (method == 'DELETE' && data.facet) {
-            restResult = modelResource['delete_'+ data.facet](data.id, request);
-            if (restResult) {
-                result.status = 200;
-            }
-        } else if (method == 'DELETE' && modelResource.onDelete) {
-            restResult = modelResource.onDelete(data.id, request);
-            if (restResult) {
-                result.status = 200;
-            }
+
+        var methodName = "";
+        var args = [];
+        var successStatus = 200;
+
+        switch(request.method) {
+            case 'GET':
+                if (data.id) {
+                    methodName = data.facet ? 'get_' + data.facet : 'onGet';
+                    args = [data.id];        
+                }
+                else {
+                    methodName = data.facet ? 'list_' + data.facet : 'onList';
+                }
+                break;
+            case 'POST':
+                methodName = data.facet ? 'post_'+data.facet : 'onPost';
+                args = [data.postData];
+                successStatus = 201;
+                break;
+            case 'PUT':
+                methodName = data.facet ? 'put_'+data.facet : 'onPut';
+                args = [data.id, data.postData];
+                break;
+            case 'DELETE':
+                methodName = data.facet ? 'delete_' + data.facet : 'onDelete';
+                args = [data.id];
+                break;
+            default:
+                break;
         }
 
-        result.response = restResult;
-
+        if (modelResource[methodName]){
+            args.push(request);
+            restResult = modelResource[methodName].apply(modelResource, args);
+            if(restResult)
+                result.status = successStatus;
+        
+            result.response = restResult;
+        }
+        else {
+            result.status = 404;
+            result.response = 'Not found';
+        }
+        
         return result;
     };
 }
