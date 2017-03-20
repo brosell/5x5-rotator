@@ -251,10 +251,13 @@ Api.prototype = {
 	},
 
 	applyBoilerPlate: function(other) {
+		var me = this;
 		var functions = {
 			onList: function(request) {
 				if (request.parentId) {
-					return this.model.queryItems(function(item) { return this.parentFilter(item, request.parentId); });
+					return this.model.queryItems(function(item) { 
+						return other.parentFilter(item, request.parentId); 
+					});
 				}
 				return this.model.list();
 			},
