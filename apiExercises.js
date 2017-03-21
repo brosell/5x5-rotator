@@ -1,5 +1,8 @@
 var log = require("./libs/log.js");
 var models = require('./models.js');
+var LINQ = require('node-linq').LINQ;
+
+var ExerciseCategoryRotator = require('./ExerciseCategoryRotator.js');
 
 function ExerciseBootstrapper(exercises) {
     
@@ -32,8 +35,11 @@ module.exports = {
         parentFilter: function(item, parentId) { return item.category == parentId; },
 
         // FACETS
-        list_rotate: function() {
-            return { result: "rotated" };
+        list_rotate: function(request) {
+            var r = ExerciseCategoryRotator.create();
+            var items = r.rotateAll(this.model.list());
+            this.model.bulkUpdate(items);
+            return this.list_currentExercises(request);
         },
         get_rotate: function(id) {
             return { result: "rotated: " + id };

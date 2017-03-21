@@ -1,30 +1,5 @@
 var RequestDispatcher = require("../RequestDispatcher.js");
 
-function all(tag, cases, fn) {
-        for(var i=0; i<cases.length; i++) {
-            var tc = cases[i];
-            (function(tc) {
-                it(tag + ': ' + tc.tag, function() { fn(tc); } );
-            })(tc);
-        }    
-    }
-
-
-// get, no id, with facet
-// get, no id, no facet
-// get, id, with facet
-// get, id, no facet
-
-// put, id, with facet
-// put, id, no facet
-
-// post, no id, with facet
-// post, no id, no facet
-
-// delete, id, with facet
-// delete, id, no facet
-
-
 describe('RequestDispatcher', function() {
     var dispatcher;
     var apiResource = {}
@@ -42,20 +17,6 @@ describe('RequestDispatcher', function() {
     it('is awis instantiatalbe esome', function() {
         expect(dispatcher).not.toBe(undefined);
     });
-
-    // get, no id, with facet
-// get, no id, no facet
-// get, id, with facet
-// get, id, no facet
-
-// put, id, with facet
-// put, id, no facet
-
-// post, no id, with facet
-// post, no id, no facet
-
-// delete, id, with facet
-// delete, id, no facet
     
     var tcRespondsTo = [
         { tag: 'get/id', method: 'GET', id: 12, facet: undefined, expected: { fn: 'onGet', fnArgs: [12, request], status: 200, response: 'roger onGet' } },

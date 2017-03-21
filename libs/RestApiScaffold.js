@@ -101,8 +101,8 @@ Api.prototype = {
 
 	processUrl: function(pipeline) {
 		/*
-			resource/(id)
-			parent/id/child/(id) - order/12/items, order/12/items/42
+			resource/(id)/$facet
+			parent/id/child/(id)/$facet - order/12/items, order/12/items/42
 		*/
 		log.debug("api.processQueryUrl");
 		
@@ -128,11 +128,6 @@ Api.prototype = {
 			pipeline.data.resource = pathSegments[3];
 			pipeline.data.id = pathSegments[4];
 		}
-
-		// if (pipeline.data.id.charAt(0) == "$") {
-		// 	pipeline.data.facet = pipeline.data.id.substring(1);
-		// 	pipeline.data.id = "";
-		// }
 
 		log.debug('parent:   ' + pipeline.data.parentResource);
 		log.debug('parentId: ' + pipeline.data.parentId);

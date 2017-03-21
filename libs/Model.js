@@ -119,6 +119,19 @@ Model.prototype = {
 		return this.clone(toUpdate);
 	},
 
+	bulkUpdate: function(items) {
+		var i;
+		for(i=0; i<items.length; i++) {
+			if (!items[i].id) {
+				throw "No id";
+			}
+		}
+
+		for(i=0; i<items.length; i++) {
+			this.update(items[i].id, items[i]);
+		}
+	},
+
 	load: function() {
 		log.debug('loading: ' + this.filename);
 		try {
